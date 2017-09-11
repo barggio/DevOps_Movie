@@ -6,5 +6,10 @@ pipeline {
         sh 'echo "I am testing this app"'
       }
     }
+    stage('build docker') {
+      steps {
+        sh 'docker build -t popcorn:$BUILD_NUMBER .'
+      }
+    }
   }
 }
