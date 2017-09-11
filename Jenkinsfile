@@ -13,7 +13,7 @@ pipeline {
     }
     stage('build docker') {
       steps {
-        sh '''docker login -u barggio -p $DOCKER_HIB
+        sh '''docker login -u barggio -p $DOCKER_HUB
 docker build -t barggio/popcorn:$BUILD_NUMBER .'''
       }
     }
