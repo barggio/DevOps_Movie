@@ -17,5 +17,10 @@ pipeline {
 docker build -t barggio/popcorn:$BUILD_NUMBER .'''
       }
     }
+    stage('testing'){
+      steps {
+        sh '''docker run barggio/popcorn:$BUILD_NUMBER rails test'''
+      }
+    }
   }
 }
