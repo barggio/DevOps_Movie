@@ -27,6 +27,6 @@ spec:
     spec:
       containers:
       - name: web
-        image: barggio/popcorn:10
+        image: barggio/popcorn:$BUILD_NUMBER
         ports:
         - containerPort: 3333

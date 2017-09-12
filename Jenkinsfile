@@ -18,6 +18,9 @@ docker build -t barggio/popcorn:$BUILD_NUMBER .
 docker push barggio/popcorn:$BUILD_NUMBER'''
       }
     }
+    stage('Deploy to Kubernetes') {
+        sh '''envsubst < deployment.yaml | kubectl apply -f -'''
+    }
     stage('testing'){
       steps {
         sh '''docker run barggio/popcorn:$BUILD_NUMBER rails test'''
