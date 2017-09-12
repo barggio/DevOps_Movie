@@ -14,7 +14,8 @@ pipeline {
     stage('build docker') {
       steps {
         sh '''docker login -u barggio -p $DOCKER_HUB
-docker build -t barggio/popcorn:$BUILD_NUMBER .'''
+docker build -t barggio/popcorn:$BUILD_NUMBER .
+docker push barggio/popcorn:$BUILD_NUMBER'''
       }
     }
     stage('testing'){
