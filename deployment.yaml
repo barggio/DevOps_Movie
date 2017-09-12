@@ -1,3 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  labels:
+    service: web
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3333
+  selector:
+    web: rails
+
+---
+
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -10,7 +26,7 @@ spec:
         web: rails
     spec:
       containers:
-	- name: web
-	  image: barggio/popcorn:10
-	  ports:
-	  - containerPort: 3333
+      - name: web
+        image: barggio/popcorn:10
+        ports:
+        - containerPort: 3333
