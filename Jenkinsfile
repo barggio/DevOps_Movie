@@ -19,7 +19,9 @@ docker push barggio/popcorn:$BUILD_NUMBER'''
       }
     }
     stage('Deploy to Kubernetes') {
+      steps {
         sh '''envsubst < deployment.yaml | kubectl apply -f -'''
+      }
     }
     stage('testing'){
       steps {
